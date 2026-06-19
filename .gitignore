@@ -3,3 +3,12 @@
 "out/" 
 "*.user" 
 "*.suo" 
+.vs/ 
+out/ 
+build/ 
+*.exe 
+*.dll 
+*.obj 
+*.pdb 
+CMakeCache.txt 
+CMakeFiles/ 

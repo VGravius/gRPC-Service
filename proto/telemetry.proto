@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package telemetry.v1;
+
+import "google/rpc/status.proto";
+import "google/protobuf/timestamp.proto";
+
+message GetParameterRequest {
+    string name = 1;
+}
+
+message GetParameterResponse {
+    string name = 1;
+    string value = 2;
+    google.protobuf.Timestamp timestamp = 3;
+    google.rpc.Status status = 4;
+}
+
+message SetParameterRequest {
+    string name = 1;
+    string value = 2;
+    string request_id = 3;
+}
+
+message SetParameterResponse {
+    google.rpc.Status status = 1;
+}
+
+service TelemetryService {
+    rpc GetParameter(GetParameterRequest) returns (GetParameterResponse);
+    rpc SetParameter(SetParameterRequest) returns (SetParameterResponse);
+}
