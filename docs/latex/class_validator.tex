@@ -1,0 +1,180 @@
+\doxysection{Validator Class Reference}
+\hypertarget{class_validator}{}\label{class_validator}\index{Validator@{Validator}}
+
+
+Класс для валидации входных данных и контроля уникальности request\+\_\+id.  
+
+
+
+
+{\ttfamily \+\#include $<$validator.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{class_validator_a11643882aade9caf6d4c0928dbd02dc4}{Validate\+Name}} (const std::\+string \&name) const
+\begin{DoxyCompactList}\small\item\em Проверяет, что имя параметра не пустое. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_validator_a161f5989848b99b73876d9127ab76432}{Validate\+Value}} (const std::\+string \&value) const
+\begin{DoxyCompactList}\small\item\em Проверяет, что значение параметра не пустое. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_validator_a2ff92f87056566947694004eb31500d2}{Validate\+Request\+Id}} (const std::\+string \&request\+\_\+id) const
+\begin{DoxyCompactList}\small\item\em Проверяет, что request\+\_\+id не пустой. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_validator_aa169d89237b7cf16009bf81430f7563d}{Is\+Request\+Id\+Used}} (const std::\+string \&request\+\_\+id) const
+\begin{DoxyCompactList}\small\item\em Проверяет, использовался ли указанный request\+\_\+id ранее. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_validator_a1722d0675b6975ad6c9543b907dfe8ae}{Mark\+Request\+Id\+Used}} (const std::\+string \&request\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Отмечает request\+\_\+id как использованный. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для валидации входных данных и контроля уникальности request\+\_\+id. 
+
+Предоставляет методы для проверки:\+
+\begin{DoxyItemize}
+\item Имя параметра — не пустое.
+\item Значение параметра — не пустое.
+\item request\+\_\+id — не пустой и уникальный.
+\end{DoxyItemize}
+
+Все методы, работающие с хранилищем used\+\_\+ids\+\_\+, потокобезопасны благодаря использованию std::\+mutex.
+
+\begin{DoxyNote}{Note}
+Использует std::\+unordered\+\_\+set для хранения использованных request\+\_\+id. 
+
+Поиск и вставка выполняются за O(1) в среднем. 
+\end{DoxyNote}
+
+
+\label{class_validator_doc-func-members}
+\Hypertarget{class_validator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_validator_aa169d89237b7cf16009bf81430f7563d}\index{Validator@{Validator}!IsRequestIdUsed@{IsRequestIdUsed}}
+\index{IsRequestIdUsed@{IsRequestIdUsed}!Validator@{Validator}}
+\doxysubsubsection{\texorpdfstring{IsRequestIdUsed()}{IsRequestIdUsed()}}
+{\footnotesize\ttfamily \label{class_validator_aa169d89237b7cf16009bf81430f7563d} 
+bool Validator::\+\+Is\+Request\+Id\+Used (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{request\+\_\+id}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверяет, использовался ли указанный request\+\_\+id ранее. 
+
+Метод потокобезопасен.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request\+\_\+id} & Уникальный идентификатор запроса. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — request\+\_\+id уже использовался. 
+
+false — request\+\_\+id новый (не использовался).
+\end{DoxyReturn}
+Метод блокирует мьютекс для безопасного доступа к хранилищу used\+\_\+ids\+\_\+. Поиск выполняется за O(1) благодаря использованию std::\+unordered\+\_\+set.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request\+\_\+id} & Уникальный идентификатор запроса. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — request\+\_\+id уже использовался. 
+
+false — request\+\_\+id новый (не использовался).
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Потокобезопасен благодаря std::\+lock\+\_\+guard. 
+\end{DoxyNote}
+\Hypertarget{class_validator_a1722d0675b6975ad6c9543b907dfe8ae}\index{Validator@{Validator}!MarkRequestIdUsed@{MarkRequestIdUsed}}
+\index{MarkRequestIdUsed@{MarkRequestIdUsed}!Validator@{Validator}}
+\doxysubsubsection{\texorpdfstring{MarkRequestIdUsed()}{MarkRequestIdUsed()}}
+{\footnotesize\ttfamily \label{class_validator_a1722d0675b6975ad6c9543b907dfe8ae} 
+void Validator::\+\+Mark\+Request\+Id\+Used (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{request\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Отмечает request\+\_\+id как использованный. 
+
+Метод потокобезопасен. После вызова этого метода \doxylink{class_validator_aa169d89237b7cf16009bf81430f7563d}{Is\+Request\+Id\+Used()} для данного ID вернёт true.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request\+\_\+id} & Уникальный идентификатор запроса.\\
+\hline
+\end{DoxyParams}
+Метод блокирует мьютекс и добавляет request\+\_\+id в хранилище used\+\_\+ids\+\_\+. После этого любой вызов \doxylink{class_validator_aa169d89237b7cf16009bf81430f7563d}{Is\+Request\+Id\+Used()} для этого ID вернёт true.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request\+\_\+id} & Уникальный идентификатор запроса.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Потокобезопасен благодаря std::\+lock\+\_\+guard. 
+
+Дублирующиеся вставки игнорируются (множество гарантирует уникальность). 
+\end{DoxyNote}
+\Hypertarget{class_validator_a11643882aade9caf6d4c0928dbd02dc4}\index{Validator@{Validator}!ValidateName@{ValidateName}}
+\index{ValidateName@{ValidateName}!Validator@{Validator}}
+\doxysubsubsection{\texorpdfstring{ValidateName()}{ValidateName()}}
+{\footnotesize\ttfamily \label{class_validator_a11643882aade9caf6d4c0928dbd02dc4} 
+bool Validator::\+\+Validate\+Name (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверяет, что имя параметра не пустое. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя параметра. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — имя не пустое. 
+
+false — имя пустое. 
+\end{DoxyReturn}
+\Hypertarget{class_validator_a2ff92f87056566947694004eb31500d2}\index{Validator@{Validator}!ValidateRequestId@{ValidateRequestId}}
+\index{ValidateRequestId@{ValidateRequestId}!Validator@{Validator}}
+\doxysubsubsection{\texorpdfstring{ValidateRequestId()}{ValidateRequestId()}}
+{\footnotesize\ttfamily \label{class_validator_a2ff92f87056566947694004eb31500d2} 
+bool Validator::\+\+Validate\+Request\+Id (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{request\+\_\+id}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверяет, что request\+\_\+id не пустой. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request\+\_\+id} & Уникальный идентификатор запроса. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — request\+\_\+id не пустой. 
+
+false — request\+\_\+id пустой. 
+\end{DoxyReturn}
+\Hypertarget{class_validator_a161f5989848b99b73876d9127ab76432}\index{Validator@{Validator}!ValidateValue@{ValidateValue}}
+\index{ValidateValue@{ValidateValue}!Validator@{Validator}}
+\doxysubsubsection{\texorpdfstring{ValidateValue()}{ValidateValue()}}
+{\footnotesize\ttfamily \label{class_validator_a161f5989848b99b73876d9127ab76432} 
+bool Validator::\+\+Validate\+Value (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{value}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверяет, что значение параметра не пустое. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Значение параметра. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — значение не пустое. 
+
+false — значение пустое. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\doxymbox{\hyperlink{validator_8h}{validator.\+h}}\item 
+src/\+\doxymbox{\hyperlink{validator_8cpp}{validator.\+cpp}}\end{DoxyCompactItemize}

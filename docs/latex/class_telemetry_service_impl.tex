@@ -1,0 +1,150 @@
+\doxysection{Telemetry\+Service\+Impl Class Reference}
+\hypertarget{class_telemetry_service_impl}{}\label{class_telemetry_service_impl}\index{TelemetryServiceImpl@{TelemetryServiceImpl}}
+
+
+Класс-\/наследник g\+RPC-\/сервиса Telemetry\+Service.  
+
+
+
+
+{\ttfamily \+\#include $<$telemetry\+\_\+service.\+h$>$}
+
+Inheritance diagram for Telemetry\+Service\+Impl:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_telemetry_service_impl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+grpc::\+\+Status \doxymbox{\hyperlink{class_telemetry_service_impl_aed7f0bf87ea48aa62791d349fca43928}{Get\+Parameter}} (grpc::\+\+Server\+Context \texorpdfstring{$\ast$}{*}context, const telemetry::\+v1::\+\+Get\+Parameter\+Request \texorpdfstring{$\ast$}{*}request, telemetry::\+v1::\+\+Get\+Parameter\+Response \texorpdfstring{$\ast$}{*}response) override
+\begin{DoxyCompactList}\small\item\em Обрабатывает запрос на получение значения параметра. \end{DoxyCompactList}\item 
+grpc::\+\+Status \doxymbox{\hyperlink{class_telemetry_service_impl_afe807d7d7da59b73c527292f653aba1b}{Set\+Parameter}} (grpc::\+\+Server\+Context \texorpdfstring{$\ast$}{*}context, const telemetry::\+v1::\+\+Set\+Parameter\+Request \texorpdfstring{$\ast$}{*}request, telemetry::\+v1::\+\+Set\+Parameter\+Response \texorpdfstring{$\ast$}{*}response) override
+\begin{DoxyCompactList}\small\item\em Обрабатывает запрос на установку значения параметра. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс-\/наследник g\+RPC-\/сервиса Telemetry\+Service. 
+
+Реализует методы для получения и установки параметров системы. Наследует сгенерированный класс telemetry::\+v1::\+\+Telemetry\+Service::\+\+Service и переопределяет его виртуальные методы.
+
+\begin{DoxyNote}{Note}
+Класс объявлен как final — от него нельзя наследоваться. 
+
+Все методы возвращают grpc::\+\+Status и работают с контекстом Server\+Context. 
+\end{DoxyNote}
+
+
+\label{class_telemetry_service_impl_doc-func-members}
+\Hypertarget{class_telemetry_service_impl_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_telemetry_service_impl_aed7f0bf87ea48aa62791d349fca43928}\index{TelemetryServiceImpl@{TelemetryServiceImpl}!GetParameter@{GetParameter}}
+\index{GetParameter@{GetParameter}!TelemetryServiceImpl@{TelemetryServiceImpl}}
+\doxysubsubsection{\texorpdfstring{GetParameter()}{GetParameter()}}
+{\footnotesize\ttfamily \label{class_telemetry_service_impl_aed7f0bf87ea48aa62791d349fca43928} 
+grpc::\+\+Status Telemetry\+Service\+Impl::\+\+Get\+Parameter (\begin{DoxyParamCaption}\item[{grpc::\+\+Server\+Context \texorpdfstring{$\ast$}{*}}]{context}{, }\item[{const telemetry::\+v1::\+\+Get\+Parameter\+Request \texorpdfstring{$\ast$}{*}}]{request}{, }\item[{telemetry::\+v1::\+\+Get\+Parameter\+Response \texorpdfstring{$\ast$}{*}}]{response}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Обрабатывает запрос на получение значения параметра. 
+
+Метод должен:\+
+\begin{DoxyEnumerate}
+\item Проверить, что имя параметра не пустое.
+\item Найти параметр в кэше.
+\item Если найден — вернуть значение с временной меткой.
+\item Если не найден — вернуть статус NOT\+\_\+\+FOUND.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Контекст g\+RPC-\/сервера (передаётся автоматически). \\
+\hline
+{\em request} & Запрос, содержащий имя параметра. \\
+\hline
+{\em response} & Ответ, содержащий имя, значение, время и статус. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+grpc::\+\+Status Статус выполнения операции.
+\end{DoxyReturn}
+Алгоритм работы:\+
+\begin{DoxyEnumerate}
+\item Проверяет, что имя параметра не пустое.
+\item Ищет параметр в кэше.
+\item Если параметр найден — возвращает его значение с временной меткой.
+\item Если не найден — возвращает статус NOT\+\_\+\+FOUND.
+\item Логирует результат операции.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Контекст сервера (не используется). \\
+\hline
+{\em request} & Запрос, содержащий имя параметра. \\
+\hline
+{\em response} & Ответ, содержащий имя, значение, время и статус. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+grpc::\+\+Status Статус выполнения операции (OK или ошибка). 
+\end{DoxyReturn}
+\Hypertarget{class_telemetry_service_impl_afe807d7d7da59b73c527292f653aba1b}\index{TelemetryServiceImpl@{TelemetryServiceImpl}!SetParameter@{SetParameter}}
+\index{SetParameter@{SetParameter}!TelemetryServiceImpl@{TelemetryServiceImpl}}
+\doxysubsubsection{\texorpdfstring{SetParameter()}{SetParameter()}}
+{\footnotesize\ttfamily \label{class_telemetry_service_impl_afe807d7d7da59b73c527292f653aba1b} 
+grpc::\+\+Status Telemetry\+Service\+Impl::\+\+Set\+Parameter (\begin{DoxyParamCaption}\item[{grpc::\+\+Server\+Context \texorpdfstring{$\ast$}{*}}]{context}{, }\item[{const telemetry::\+v1::\+\+Set\+Parameter\+Request \texorpdfstring{$\ast$}{*}}]{request}{, }\item[{telemetry::\+v1::\+\+Set\+Parameter\+Response \texorpdfstring{$\ast$}{*}}]{response}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Обрабатывает запрос на установку значения параметра. 
+
+Метод должен:\+
+\begin{DoxyEnumerate}
+\item Проверить, что имя, значение и request\+\_\+id не пустые.
+\item Проверить уникальность request\+\_\+id (защита от дублей).
+\item Сохранить параметр в кэш.
+\item Отметить request\+\_\+id как использованный.
+\item Вернуть статус OK или ошибку.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Контекст g\+RPC-\/сервера (передаётся автоматически). \\
+\hline
+{\em request} & Запрос, содержащий имя, значение и request\+\_\+id. \\
+\hline
+{\em response} & Ответ, содержащий статус операции. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+grpc::\+\+Status Статус выполнения операции.
+\end{DoxyReturn}
+Алгоритм работы:\+
+\begin{DoxyEnumerate}
+\item Проверяет, что имя, значение и request\+\_\+id не пустые.
+\item Проверяет, что request\+\_\+id не использовался ранее.
+\item Сохраняет параметр в кэш и отмечает request\+\_\+id как использованный.
+\item Возвращает статус OK или ошибку.
+\item Логирует результат операции.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Контекст сервера (не используется). \\
+\hline
+{\em request} & Запрос, содержащий имя, значение и request\+\_\+id. \\
+\hline
+{\em response} & Ответ, содержащий статус операции. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+grpc::\+\+Status Статус выполнения операции (OK или ошибка). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\doxymbox{\hyperlink{telemetry__service_8h}{telemetry\+\_\+service.\+h}}\item 
+src/\+\doxymbox{\hyperlink{telemetry__service_8cpp}{telemetry\+\_\+service.\+cpp}}\end{DoxyCompactItemize}

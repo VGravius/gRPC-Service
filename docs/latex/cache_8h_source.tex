@@ -1,0 +1,37 @@
+\doxysection{cache.\+h}
+\hypertarget{cache_8h_source}{}\label{cache_8h_source}\index{src/cache.h@{src/cache.h}}
+\doxymbox{\hyperlink{cache_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ @file\ cache.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ @brief\ Объявление\ потокобезопасного\ хранилища\ параметров\ в\ памяти.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ @version\ 1.0}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ @date\ 2026-\/06-\/20}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ @author\ vladcrim}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ Данный\ файл\ содержит\ объявление\ класса\ Cache,\ который\ предоставляет}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ потокобезопасное\ хранилище\ данных\ на\ основе\ std::unordered\_map.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ Использует\ std::mutex\ для\ защиты\ от\ одновременного\ доступа\ из\ разных\ потоков.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <unordered\_map>}\ \ \textcolor{comment}{//\ Для\ хранения\ данных}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <optional>}\ \ \ \ \ \ \ \textcolor{comment}{//\ Для\ возврата\ "{}ничего"{}\ (nullopt)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Для\ ключей\ и\ значений}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Для\ потокобезопасности}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_cache}{Cache}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_cache_ae4dc75f9086ced3069a2ff992770f8a3}{Set}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \textcolor{keyword}{const}\ std::string\&\ value);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00053\ \ \ \ \ std::optional<std::string>\ \doxymbox{\hyperlink{class_cache_a0aceafd33a4cfac5db0a6046da5b58a5}{Get}}(\textcolor{keyword}{const}\ std::string\&\ key)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_cache_ab4db3b242a03686296479eeb750ff805}{Exists}}(\textcolor{keyword}{const}\ std::string\&\ key)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ data\_;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ mutex\_;\ \ }
+\DoxyCodeLine{00069\ \};}
+
+\end{DoxyCode}

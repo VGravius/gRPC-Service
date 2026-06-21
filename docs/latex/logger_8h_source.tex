@@ -1,0 +1,34 @@
+\doxysection{logger.\+h}
+\hypertarget{logger_8h_source}{}\label{logger_8h_source}\index{src/logger.h@{src/logger.h}}
+\doxymbox{\hyperlink{logger_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ @file\ logger.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ @brief\ Объявление\ класса\ для\ логирования\ операций\ в\ консоль.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ @version\ 1.0}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ @date\ 2026-\/06-\/20}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ @author\ vladcrim}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ Данный\ файл\ содержит\ объявление\ класса\ Logger,\ который\ предоставляет}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ интерфейс\ для\ записи\ информационных\ сообщений\ и\ ошибок\ в\ консоль}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ с\ временными\ метками.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}\ \ \textcolor{comment}{//\ Для\ работы\ со\ строками}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_logger}{Logger}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_logger_aa81b667ce918f412a79dc613f34b7bde}{Log}}(\textcolor{keyword}{const}\ std::string\&\ operation,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ name,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ status,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ details\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_logger_a58576dc8b35ac9cd61bd78baf873ed9e}{LogError}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \ \ std::string\ GetCurrentTime()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,68 @@
+\doxysection{src/\+main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+Точка входа в g\+RPC-\/сервис управления параметрами.  
+
+
+{\ttfamily \+\#include $<$grpcpp/\+grpcpp.\+h$>$}\newline
+{\ttfamily \+\#include "{}telemetry\+\_\+service.\+h"{}}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$memory$>$}\newline
+{\ttfamily \+\#include $<$grpcpp/\+ext/\+proto\+\_\+server\+\_\+reflection\+\_\+plugin.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{main_8cpp_afec70f4aa13559a9e64d869bb52e2b2f}{Run\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Запускает g\+RPC-\/сервер и ожидает входящие запросы. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Точка входа в программу. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Точка входа в g\+RPC-\/сервис управления параметрами. 
+
+Этот файл содержит функцию \doxylink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}, которая запускает g\+RPC-\/сервер, и функцию \doxylink{main_8cpp_afec70f4aa13559a9e64d869bb52e2b2f}{Run\+Server()}, которая создаёт и настраивает сервер. Сервер слушает порт 50051 и обрабатывает запросы Get\+Parameter и Set\+Parameter. 
+
+\label{main_8cpp_doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Точка входа в программу. 
+
+Устанавливает локаль для корректного отображения русских символов, выводит приветственное сообщение и запускает сервер.
+
+\begin{DoxyReturn}{Returns}
+int Код возврата (0 — успешное завершение). 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_afec70f4aa13559a9e64d869bb52e2b2f}\index{main.cpp@{main.cpp}!RunServer@{RunServer}}
+\index{RunServer@{RunServer}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{RunServer()}{RunServer()}}
+{\footnotesize\ttfamily \label{main_8cpp_afec70f4aa13559a9e64d869bb52e2b2f} 
+void Run\+Server (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Запускает g\+RPC-\/сервер и ожидает входящие запросы. 
+
+Функция выполняет следующие шаги:\+
+\begin{DoxyEnumerate}
+\item Устанавливает адрес сервера (0.\+0.\+0.\+0:\+50051) — слушает все интерфейсы.
+\item Включает рефлексию, чтобы утилита grpcurl могла автоматически определять методы сервиса.
+\item Создаёт экземпляр класса \doxylink{class_telemetry_service_impl}{Telemetry\+Service\+Impl}, который содержит логику обработки запросов.
+\item Настраивает Server\+Builder:\+ добавляет порт и регистрирует сервис.
+\item Запускает сервер с помощью Build\+And\+Start().
+\item Если сервер не запустился, выводит сообщение об ошибке и завершает работу.
+\item При успешном запуске выводит сообщение в консоль и переходит в режим ожидания запросов (Wait()).
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+Сервер работает в бесконечном цикле, пока не будет прерван (Ctrl+C). 
+\end{DoxyNote}

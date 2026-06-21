@@ -1,0 +1,36 @@
+\doxysection{telemetry\+\_\+service.\+h}
+\hypertarget{telemetry__service_8h_source}{}\label{telemetry__service_8h_source}\index{src/telemetry\_service.h@{src/telemetry\_service.h}}
+\doxymbox{\hyperlink{telemetry__service_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ @file\ telemetry\_service.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ @brief\ Объявление\ класса\ gRPC-\/сервиса\ для\ управления\ параметрами.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ @version\ 1.0}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ @date\ 2026-\/06-\/20}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ @author\ vladcrim}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ Данный\ файл\ содержит\ объявление\ класса\ TelemetryServiceImpl,}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ который\ наследует\ сгенерированный\ gRPC-\/сервис\ telemetry::v1::TelemetryService.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ Класс\ переопределяет\ методы\ GetParameter\ и\ SetParameter\ для\ обработки}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \ входящих\ запросов.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <grpcpp/grpcpp.h>}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Основной\ заголовок\ gRPC\ для\ C++}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}telemetry.grpc.pb.h"{}}\ \ \ \ \ \ \ \textcolor{comment}{//\ Сгенерированный\ код\ из\ .proto\ файла}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_telemetry_service_impl}{TelemetryServiceImpl}}\ final\ :\ \textcolor{keyword}{public}\ telemetry::v1::TelemetryService::Service\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ grpc::Status\ \doxymbox{\hyperlink{class_telemetry_service_impl_aed7f0bf87ea48aa62791d349fca43928}{GetParameter}}(}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ grpc::ServerContext*\ context,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ telemetry::v1::GetParameterRequest*\ request,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ telemetry::v1::GetParameterResponse*\ response)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00065\ \ \ \ \ grpc::Status\ \doxymbox{\hyperlink{class_telemetry_service_impl_afe807d7d7da59b73c527292f653aba1b}{SetParameter}}(}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ grpc::ServerContext*\ context,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ telemetry::v1::SetParameterRequest*\ request,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ telemetry::v1::SetParameterResponse*\ response)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00069\ \};}
+
+\end{DoxyCode}

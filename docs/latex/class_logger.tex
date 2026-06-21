@@ -1,0 +1,68 @@
+\doxysection{Logger Class Reference}
+\hypertarget{class_logger}{}\label{class_logger}\index{Logger@{Logger}}
+
+
+Класс для логирования операций в консоль.  
+
+
+
+
+{\ttfamily \+\#include $<$logger.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_logger_aa81b667ce918f412a79dc613f34b7bde}{Log}} (const std::\+string \&operation, const std::\+string \&name, const std::\+string \&status, const std::\+string \&details="{}"{})
+\item 
+void \doxymbox{\hyperlink{class_logger_a58576dc8b35ac9cd61bd78baf873ed9e}{Log\+Error}} (const std::\+string \&message)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для логирования операций в консоль. 
+
+Предоставляет два основных метода:\+
+\begin{DoxyItemize}
+\item \doxylink{class_logger_aa81b667ce918f412a79dc613f34b7bde}{Log()} — для записи информационных сообщений об операциях.
+\item \doxylink{class_logger_a58576dc8b35ac9cd61bd78baf873ed9e}{Log\+Error()} — для записи сообщений об ошибках.
+\end{DoxyItemize}
+
+Все сообщения автоматически дополняются временной меткой в формате "{}\+YYYY-\/\+MM-\/\+DD HH:\+\+MM:\+\+SS.\+mmm"{}.
+
+\begin{DoxyNote}{Note}
+Логи выводятся в стандартный поток вывода (std::\+cout). 
+
+Время формируется в локальном часовом поясе. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2vladcrim_2source_2repos_2g_r_p_c-_service_2src_2logger_8h-example}{C:\+/\+\+Users/\+vladcrim/\+source/\+repos/\+g\+RPC-\/\+Service/\+src/\+logger.\+h}}.\end{Desc}
+
+
+\label{class_logger_doc-func-members}
+\Hypertarget{class_logger_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_logger_aa81b667ce918f412a79dc613f34b7bde}\index{Logger@{Logger}!Log@{Log}}
+\index{Log@{Log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Log()}{Log()}}
+{\footnotesize\ttfamily \label{class_logger_aa81b667ce918f412a79dc613f34b7bde} 
+void Logger::\+\+Log (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{operation}{, }\item[{const std::\+string \&}]{name}{, }\item[{const std::\+string \&}]{status}{, }\item[{const std::\+string \&}]{details}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2vladcrim_2source_2repos_2g_r_p_c-_service_2src_2logger_8cpp-example}{C:\+/\+\+Users/\+vladcrim/\+source/\+repos/\+g\+RPC-\/\+Service/\+src/\+logger.\+cpp}}, and \doxymbox{\hyperlink{_c_1_2_users_2vladcrim_2source_2repos_2g_r_p_c-_service_2src_2logger_8h-example}{C:\+/\+\+Users/\+vladcrim/\+source/\+repos/\+g\+RPC-\/\+Service/\+src/\+logger.\+h}}.\end{Desc}
+\Hypertarget{class_logger_a58576dc8b35ac9cd61bd78baf873ed9e}\index{Logger@{Logger}!LogError@{LogError}}
+\index{LogError@{LogError}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{LogError()}{LogError()}}
+{\footnotesize\ttfamily \label{class_logger_a58576dc8b35ac9cd61bd78baf873ed9e} 
+void Logger::\+\+Log\+Error (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{message}{}\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2vladcrim_2source_2repos_2g_r_p_c-_service_2src_2logger_8cpp-example}{C:\+/\+\+Users/\+vladcrim/\+source/\+repos/\+g\+RPC-\/\+Service/\+src/\+logger.\+cpp}}, and \doxymbox{\hyperlink{_c_1_2_users_2vladcrim_2source_2repos_2g_r_p_c-_service_2src_2logger_8h-example}{C:\+/\+\+Users/\+vladcrim/\+source/\+repos/\+g\+RPC-\/\+Service/\+src/\+logger.\+h}}.\end{Desc}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\doxymbox{\hyperlink{logger_8h}{logger.\+h}}\item 
+src/\+\doxymbox{\hyperlink{logger_8cpp}{logger.\+cpp}}\end{DoxyCompactItemize}

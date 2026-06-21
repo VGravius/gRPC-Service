@@ -1,0 +1,144 @@
+\doxysection{Cache Class Reference}
+\hypertarget{class_cache}{}\label{class_cache}\index{Cache@{Cache}}
+
+
+Потокобезопасное хранилище параметров в памяти.  
+
+
+
+
+{\ttfamily \+\#include $<$cache.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_cache_ae4dc75f9086ced3069a2ff992770f8a3}{Set}} (const std::\+string \&key, const std::\+string \&value)
+\begin{DoxyCompactList}\small\item\em Сохраняет пару "{}ключ-\/значение"{} в кэш. \end{DoxyCompactList}\item 
+std::\+optional$<$ std::\+string $>$ \doxymbox{\hyperlink{class_cache_a0aceafd33a4cfac5db0a6046da5b58a5}{Get}} (const std::\+string \&key) const
+\begin{DoxyCompactList}\small\item\em Возвращает значение параметра по ключу. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_cache_ab4db3b242a03686296479eeb750ff805}{Exists}} (const std::\+string \&key) const
+\begin{DoxyCompactList}\small\item\em Проверяет наличие ключа в кэше. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Потокобезопасное хранилище параметров в памяти. 
+
+Класс \doxylink{class_cache}{Cache} предоставляет интерфейс для сохранения, получения и проверки наличия параметров в памяти. Все методы защищены мьютексом, что позволяет безопасно использовать объект из нескольких потоков одновременно.
+
+\begin{DoxyNote}{Note}
+Использует std::\+unordered\+\_\+map для хранения данных (O(1) доступ). 
+
+std::\+mutex защищает данные от состояния гонки. 
+\end{DoxyNote}
+
+
+\label{class_cache_doc-func-members}
+\Hypertarget{class_cache_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cache_ab4db3b242a03686296479eeb750ff805}\index{Cache@{Cache}!Exists@{Exists}}
+\index{Exists@{Exists}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{Exists()}{Exists()}}
+{\footnotesize\ttfamily \label{class_cache_ab4db3b242a03686296479eeb750ff805} 
+bool Cache::\+\+Exists (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверяет наличие ключа в кэше. 
+
+Метод потокобезопасен.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Имя параметра (ключ). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — ключ существует. 
+
+false — ключ отсутствует.
+\end{DoxyReturn}
+Метод блокирует мьютекс, затем проверяет, существует ли указанный ключ в хеш-\/таблице.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Имя параметра (ключ). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — ключ существует. 
+
+false — ключ отсутствует.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Метод объявлен как const, но мьютекс помечен как mutable. 
+\end{DoxyNote}
+\Hypertarget{class_cache_a0aceafd33a4cfac5db0a6046da5b58a5}\index{Cache@{Cache}!Get@{Get}}
+\index{Get@{Get}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \label{class_cache_a0aceafd33a4cfac5db0a6046da5b58a5} 
+std::\+optional$<$ std::\+string $>$ Cache::\+\+Get (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) const}
+
+
+
+Возвращает значение параметра по ключу. 
+
+Если ключ найден — возвращает его значение, обёрнутое в std::\+optional. Если ключ не найден — возвращает std::\+nullopt. Метод потокобезопасен.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Имя параметра (ключ). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::\+optional$<$std::\+string$>$ Значение параметра или nullopt.
+\end{DoxyReturn}
+Метод блокирует мьютекс, затем выполняет поиск ключа в хеш-\/таблице. Если ключ найден — возвращает его значение, обёрнутое в std::\+optional. Если ключ не найден — возвращает std::\+nullopt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Имя параметра (ключ). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::\+optional$<$std::\+string$>$ Значение параметра или nullopt.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Метод объявлен как const, но мьютекс помечен как mutable, поэтому блокировка возможна даже в const-\/методах. 
+\end{DoxyNote}
+\Hypertarget{class_cache_ae4dc75f9086ced3069a2ff992770f8a3}\index{Cache@{Cache}!Set@{Set}}
+\index{Set@{Set}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{Set()}{Set()}}
+{\footnotesize\ttfamily \label{class_cache_ae4dc75f9086ced3069a2ff992770f8a3} 
+void Cache::\+\+Set (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{const std::\+string \&}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Сохраняет пару "{}ключ-\/значение"{} в кэш. 
+
+Если ключ уже существует, его значение будет перезаписано. Метод потокобезопасен.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Имя параметра (ключ). Не должно быть пустым. \\
+\hline
+{\em value} & Значение параметра.\\
+\hline
+\end{DoxyParams}
+Метод блокирует мьютекс, затем выполняет вставку или обновление значения по указанному ключу. Если ключ уже существует, значение будет перезаписано.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Имя параметра (ключ). \\
+\hline
+{\em value} & Значение параметра.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Использует std::\+lock\+\_\+guard для автоматической блокировки и освобождения мьютекса (RAII). 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\doxymbox{\hyperlink{cache_8h}{cache.\+h}}\item 
+src/\+\doxymbox{\hyperlink{cache_8cpp}{cache.\+cpp}}\end{DoxyCompactItemize}

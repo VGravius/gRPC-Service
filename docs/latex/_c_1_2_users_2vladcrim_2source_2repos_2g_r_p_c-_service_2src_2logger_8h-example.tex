@@ -1,0 +1,53 @@
+\doxysection{C:\+/\+\+Users/\+vladcrim/\+source/\+repos/\+g\+RPC-\/\+Service/\+src/\+logger.\+h}
+\hypertarget{_c_1_2_users_2vladcrim_2source_2repos_2g_r_p_c-_service_2src_2logger_8h-example}{}\label{_c_1_2_users_2vladcrim_2source_2repos_2g_r_p_c-_service_2src_2logger_8h-example}Записывает информацию об операции в консоль.
+
+Записывает информацию об операции в консоль.\+Формат вывода:\+ \+[YYYY-\/\+MM-\/\+DD HH:\+\+MM:\+SS.\+mmm]\+ operation:\+ name -\/ status (details)
+
+Поле details является опциональным. Если оно не указано, скобки с деталями не выводятся.
+
+
+\begin{DoxyParams}{Parameters}
+{\em operation} & Название операции (например, "{}\+Get\+Parameter"{}). \\
+\hline
+{\em name} & Имя параметра или другая сущность. \\
+\hline
+{\em status} & Статус операции (например, "{}\+OK"{}, "{}\+NOT\+\_\+\+FOUND"{}). \\
+\hline
+{\em details} & Дополнительная информация (опционально, по умолчанию "{}"{}).\\
+\hline
+\end{DoxyParams}
+Log("{}\+Get\+Parameter"{}, "{}temperature"{}, "{}\+OK"{}, "{}value:\+ 23.\+5"{}); /\+/\+ \+[2026-\/06-\/20 15:\+30:\+00.\+123]\+ Get\+Parameter:\+ temperature -\/ OK (value:\+ 23.\+5)
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ @file\ logger.h}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ @brief\ Объявление\ класса\ для\ логирования\ операций\ в\ консоль.}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ @version\ 1.0}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ @date\ 2026-\/06-\/20}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ @author\ vladcrim}}
+\DoxyCodeLine{\textcolor{comment}{//}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ Данный\ файл\ содержит\ объявление\ класса\ Logger,\ который\ предоставляет}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ интерфейс\ для\ записи\ информационных\ сообщений\ и\ ошибок\ в\ консоль}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ с\ временными\ метками.}}
+\DoxyCodeLine{\textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}\ \ \textcolor{comment}{//\ Для\ работы\ со\ строками}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_logger}{Logger}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_logger_aa81b667ce918f412a79dc613f34b7bde}{Log}}(\textcolor{keyword}{const}\ std::string\&\ operation,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ status,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ details\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_logger_a58576dc8b35ac9cd61bd78baf873ed9e}{LogError}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:}
+\DoxyCodeLine{\ \ \ \ std::string\ GetCurrentTime()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,40 @@
+\doxysection{validator.\+h}
+\hypertarget{validator_8h_source}{}\label{validator_8h_source}\index{src/validator.h@{src/validator.h}}
+\doxymbox{\hyperlink{validator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ @file\ validator.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ @brief\ Объявление\ класса\ для\ валидации\ входных\ данных.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ @version\ 1.0}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ @date\ 2026-\/06-\/20}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ @author\ vladcrim}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ Данный\ файл\ содержит\ объявление\ класса\ Validator,\ который\ проверяет}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ корректность\ входных\ данных\ (имя,\ значение,\ request\_id)\ и\ обеспечивает}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ уникальность\ request\_id\ с\ помощью\ потокобезопасного\ хранилища.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ =============================================================================}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Для\ работы\ со\ строками}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <unordered\_set>}\ \ \ \textcolor{comment}{//\ Для\ хранения\ использованных\ request\_id}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Для\ потокобезопасности}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_validator}{Validator}}\ \{}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_validator_a11643882aade9caf6d4c0928dbd02dc4}{ValidateName}}(\textcolor{keyword}{const}\ std::string\&\ name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_validator_a161f5989848b99b73876d9127ab76432}{ValidateValue}}(\textcolor{keyword}{const}\ std::string\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_validator_a2ff92f87056566947694004eb31500d2}{ValidateRequestId}}(\textcolor{keyword}{const}\ std::string\&\ request\_id)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_validator_aa169d89237b7cf16009bf81430f7563d}{IsRequestIdUsed}}(\textcolor{keyword}{const}\ std::string\&\ request\_id)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_validator_a1722d0675b6975ad6c9543b907dfe8ae}{MarkRequestIdUsed}}(\textcolor{keyword}{const}\ std::string\&\ request\_id);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00084\ \ \ \ \ std::unordered\_set<std::string>\ used\_ids\_;\ \ \textcolor{comment}{//\ Хранилище\ использованных\ request\_id.}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ mutex\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Мьютекс\ для\ потокобезопасности.}}
+\DoxyCodeLine{00086\ \};}
+
+\end{DoxyCode}
